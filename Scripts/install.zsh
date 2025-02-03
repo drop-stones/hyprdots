@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 
 scrDir="$(dirname "$(realpath "$0")")"
+if ! source "${scrDir}/functions.zsh"; then
+  echo "Error: unable to source functions.zsh..."
+  exit 1
+fi
 
 #------------#
 # installing #
@@ -34,3 +38,20 @@ cat <<"EOF"
 EOF
 
 "${scrDir}/install_configs.zsh"
+
+#------------------------#
+# enable system services #
+#------------------------#
+cat <<"EOF"
+
+                 _
+ ___ ___ ___ _ _|_|___ ___ ___
+|_ -| -_|  _| | | |  _| -_|_ -|
+|___|___|_|  \_/|_|___|___|___|
+
+EOF
+
+"${scrDir}/enable_systemctl.zsh"
+
+echo "\n"
+print_log -stat "Installation" "completed"
