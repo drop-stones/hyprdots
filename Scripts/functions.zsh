@@ -22,7 +22,7 @@ function pkg_available() {
 function aur_available() {
   local pkgIn=$1
 
-  if ${aurhlpr} -Si "${PkgIn}" &>/dev/null; then
+  if paru -Si "${pkgIn}" &>/dev/null; then
     return 0
   else
     return 1

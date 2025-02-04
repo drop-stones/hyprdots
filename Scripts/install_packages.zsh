@@ -55,5 +55,5 @@ fi
 
 if [[ ${#aurhPkg[@]} -gt 0 ]]; then
   print_log -b "[install] " "aur packages..."
-  paru --no-confirm -S "${aurhPkg[@]}"
+  paru -S --noconfirm "${aurhPkg[@]}"
 fi
