@@ -3,6 +3,7 @@ hyprland                                               # wlroots-based wayland c
 
 # --------------------------------------------------- // Applications
 alacritty                                              # terminal
+1password                                              # password manager
 
 # --------------------------------------------------- // Japanese Input
 fcitx5                                                 # input method framework
