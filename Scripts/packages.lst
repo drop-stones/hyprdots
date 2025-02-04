@@ -3,3 +3,8 @@ hyprland                                               # wlroots-based wayland c
 
 # --------------------------------------------------- // Applications
 alacritty                                              # terminal
+
+# --------------------------------------------------- // Japanese Input
+fcitx5                                                 # input method framework
+fcitx5-mozc-ut                                         # utility dictionary
+otf-ipaexfont                                          # IPA Font
