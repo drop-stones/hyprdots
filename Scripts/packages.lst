@@ -1,2 +1,5 @@
 # --------------------------------------------------- // Window Manager
 hyprland                                               # wlroots-based wayland compositor
+
+# --------------------------------------------------- // Applications
+alacritty                                              # terminal
