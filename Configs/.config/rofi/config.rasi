@@ -7,3 +7,5 @@ configuration{
     disable-history: false;
     hide-scrollbar: true;
 }
+
+@theme "~/.config/rofi/menu.rasi"
