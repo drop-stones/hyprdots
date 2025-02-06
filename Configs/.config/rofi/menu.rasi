@@ -15,7 +15,7 @@ element-text, element-icon, mode-switcher {
 
 window {
     border: 3px;
-    border-color: transparent;
+    border-color: @border;
     background-color: @background;
     border-radius: 20px;
     padding: 0px 20px 0px 0px;
@@ -26,13 +26,13 @@ window {
 }
 
 mainbox {
-    background-color: @background;
+    background-color: transparent;
     font: @font;
 }
 
 inputbar {
     children: [prompt, entry];
-    background-color: @background;
+    background-color: transparent;
     border-radius: 5px;
     padding: 2px;
     font: @font;
@@ -42,7 +42,7 @@ prompt {
     enabled: false;
     background-color: @selected;
     padding: 5px;
-    text-color: @background;
+    text-color: @selected-text;
     border-radius: 5px;
     text-align: center;
     margin: 0px;
@@ -56,12 +56,12 @@ textbox-prompt-colon {
 }
 
 entry {
-    padding: 0px 5px 8px 5px;  
+    padding: 0px 5px 8px 5px;
     margin: 15px 0px 0px 15px;
     text-color: @selected;
-    background-color: @background;
-    text-align: center; 
-    line-height: 30px;   
+    background-color: transparent;
+    text-align: center;
+    line-height: 30px;
     font: @font;
 }
 
@@ -70,7 +70,7 @@ listview {
     padding: 4px 0px 13px;
     margin: 0px 0px 0px 20px;
     columns: 1;
-    background-color: @background;
+    background-color: transparent;
     fixed-height: false;
     lines: 7;
     border-radius: 0px;
@@ -81,7 +81,7 @@ element {
     padding: 5px;
     border-radius: 0px;
     font: @font;
-    background-color: @background;
+    background-color: transparent;
     text-color: @selected;
 }
 
@@ -94,6 +94,6 @@ element-icon {
 element selected {
     background-color: @selected;
     border-radius: 15px;
-    text-color: @background;
+    text-color: @selected-text;
     font: @font;
 }
