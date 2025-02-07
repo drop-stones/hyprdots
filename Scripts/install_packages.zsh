@@ -50,7 +50,7 @@ IFS=${ofs}
 
 if [[ ${#archPkg[@]} -gt 0 ]]; then
   print_log -b "[install] " "arch packages..."
-  sudo pacman --no-confirm -S "${archPkg[@]}"
+  sudo pacman -S --noconfirm "${archPkg[@]}"
 fi
 
 if [[ ${#aurhPkg[@]} -gt 0 ]]; then
