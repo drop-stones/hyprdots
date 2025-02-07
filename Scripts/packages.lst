@@ -1,6 +1,7 @@
 # --------------------------------------------------- // Window Manager
 hyprland                                               # wlroots-based wayland compositor
 rofi-wayland                                           # application launcher
+waybar                                                 # system bar
 
 # --------------------------------------------------- // Applications
 alacritty                                              # terminal
