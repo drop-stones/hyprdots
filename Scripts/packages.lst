@@ -3,6 +3,7 @@ sddm                                                   # display manager
 qt5-quickcontrols2                                     # for sddm theme ui elements
 qt5-graphicaleffects                                   # for sddm theme effects
 qt5-svg                                                # for sddm to display svg files
+sddm-theme-tokyo-night-git                             # tokyo-night theme for sddm
 
 # --------------------------------------------------- // Window Manager
 hyprland                                               # wlroots-based wayland compositor

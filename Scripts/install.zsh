@@ -54,6 +54,21 @@ EOF
 "${scrDir}/install_wallpapers.zsh"
 "${scrDir}/install_configs.zsh"
 
+#---------------------#
+# post-install script #
+#---------------------#
+cat <<"EOF"
+
+             _      _         _       _ _
+ ___ ___ ___| |_   |_|___ ___| |_ ___| | |
+| . | . |_ -|  _|  | |   |_ -|  _| .'| | |
+|  _|___|___|_|    |_|_|_|___|_| |__,|_|_|
+|_|
+
+EOF
+
+"${scrDir}/configure_sddm.zsh"
+
 #------------------------#
 # enable system services #
 #------------------------#
