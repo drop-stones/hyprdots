@@ -1,3 +1,12 @@
+# --------------------------------------------------- // System
+pipewire                                               # audio/video server
+pipewire-alsa                                          # pipewire alsa client
+pipewire-audio                                         # pipewire audio client
+pipewire-jack                                          # pipewire jack client
+pipewire-pulse                                         # pipewire pulseaudio client
+gst-plugin-pipewire                                    # pipewire gstreamer client
+wireplumber                                            # pipewire session manager
+
 # --------------------------------------------------- // Display Manager
 sddm                                                   # display manager
 qt5-quickcontrols2                                     # for sddm theme ui elements
