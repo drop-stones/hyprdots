@@ -2,6 +2,7 @@
 hyprland                                               # wlroots-based wayland compositor
 rofi-wayland                                           # application launcher
 waybar                                                 # system bar
+hyprlock                                               # lock screen
 
 # --------------------------------------------------- // Applications
 alacritty                                              # terminal
