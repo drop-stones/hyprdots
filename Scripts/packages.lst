@@ -7,6 +7,8 @@ pipewire-pulse                                         # pipewire pulseaudio cli
 gst-plugin-pipewire                                    # pipewire gstreamer client
 wireplumber                                            # pipewire session manager
 networkmanager                                         # network manager
+bluez                                                  # bluetooth protocol stack
+bluez-utils                                            # bluetooth utility cli
 
 # --------------------------------------------------- // Display Manager
 sddm                                                   # display manager
