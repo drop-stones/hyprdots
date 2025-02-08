@@ -68,6 +68,7 @@ cat <<"EOF"
 EOF
 
 "${scrDir}/configure_sddm.zsh"
+"${scrDir}/configure_user.zsh"
 
 #------------------------#
 # enable system services #
