@@ -51,6 +51,7 @@ cat <<"EOF"
 
 EOF
 
+"${scrDir}/install_wallpapers.zsh"
 "${scrDir}/install_configs.zsh"
 
 #------------------------#
