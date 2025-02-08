@@ -6,6 +6,7 @@ pipewire-jack                                          # pipewire jack client
 pipewire-pulse                                         # pipewire pulseaudio client
 gst-plugin-pipewire                                    # pipewire gstreamer client
 wireplumber                                            # pipewire session manager
+networkmanager                                         # network manager
 
 # --------------------------------------------------- // Display Manager
 sddm                                                   # display manager
