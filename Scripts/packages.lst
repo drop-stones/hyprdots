@@ -9,6 +9,7 @@ wireplumber                                            # pipewire session manage
 networkmanager                                         # network manager
 bluez                                                  # bluetooth protocol stack
 bluez-utils                                            # bluetooth utility cli
+brightnessctl                                          # screen brightness control
 
 # --------------------------------------------------- // Display Manager
 sddm                                                   # display manager
@@ -23,6 +24,7 @@ rofi-wayland                                           # application launcher
 waybar                                                 # system bar
 swww                                                   # wallpaper
 hyprlock                                               # lock screen
+hypridle                                               # idle daemon
 
 # --------------------------------------------------- // Applications
 alacritty                                              # terminal
