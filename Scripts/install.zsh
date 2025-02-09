@@ -68,6 +68,7 @@ cat <<"EOF"
 EOF
 
 "${scrDir}/configure_sddm.zsh"
+"${scrDir}/configure_fcitx5.zsh"
 "${scrDir}/configure_user.zsh"
 
 #------------------------#
