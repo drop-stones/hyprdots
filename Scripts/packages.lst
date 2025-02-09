@@ -25,6 +25,8 @@ waybar                                                 # system bar
 swww                                                   # wallpaper
 hyprlock                                               # lock screen
 hypridle                                               # idle daemon
+hyprsunset                                             # blue light filter
+sunwait                                                # sunrise or sunset times calculator
 
 # --------------------------------------------------- // Applications
 alacritty                                              # terminal
