@@ -27,6 +27,7 @@ hyprlock                                               # lock screen
 hypridle                                               # idle daemon
 hyprsunset                                             # blue light filter
 sunwait                                                # sunrise or sunset times calculator
+dunst                                                  # notification daemon
 
 # --------------------------------------------------- // Applications
 alacritty                                              # terminal
