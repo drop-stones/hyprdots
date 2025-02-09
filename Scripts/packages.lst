@@ -28,6 +28,9 @@ hypridle                                               # idle daemon
 hyprsunset                                             # blue light filter
 sunwait                                                # sunrise or sunset times calculator
 dunst                                                  # notification daemon
+grim                                                   # screenshot tool
+slurp                                                  # region select for screenshot/screenshare
+grimblast-git                                          # screenshot helper within hyprland
 
 # --------------------------------------------------- // Applications
 alacritty                                              # terminal
