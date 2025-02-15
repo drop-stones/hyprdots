@@ -1,18 +1,22 @@
-function pkg_installed() {
-  local pkgIn=$1
-  if pacman -Qi "${pkgIn}" &>/dev/null; then
-    return 0
-  elif command -v "${pkgIn}" &>/dev/null; then
+##############################################
+##############################################
+##############################################
+# pacman/paru
+##############################################
+
+function package_installed() {
+  local package=$1
+  if pacman -Qi "$package" &>/dev/null; then
     return 0
   else
     return 1
   fi
 }
 
-function pkg_available() {
-  local pkgIn=$1
+function package_available() {
+  local package=$1
 
-  if pacman -Si "${pkgIn}" &>/dev/null; then
+  if pacman -Si "$package" &>/dev/null; then
     return 0
   else
     return 1
@@ -20,14 +24,13 @@ function pkg_available() {
 }
 
 function aur_available() {
-  local pkgIn=$1
+  local package=$1
 
-  if paru -Si "${pkgIn}" &>/dev/null; then
+  if paru -Si "$package" &>/dev/null; then
     return 0
   else
     return 1
   fi
-}
 
 function print_log() {
   while (("$#")); do

@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-scrDir="$(dirname "$(realpath "$0")")"
-if ! source "${scrDir}/functions.zsh"; then
+local script_dir="$(dirname "$(realpath "$0")")"
+if ! source "$script_dir/functions.zsh"; then
   echo "Error: unable to source functions.zsh..."
   exit 1
 fi
@@ -18,7 +18,7 @@ cat <<"EOF"
 
 EOF
 
-"${scrDir}/install_paru.zsh"
+"$script_dir/install_paru.zsh"
 
 #------------#
 # installing #
@@ -36,7 +36,7 @@ EOF
 #--------------------------------#
 # install packages from the list #
 #--------------------------------#
-"${scrDir}/install_packages.zsh" "${scrDir}/packages.lst"
+"$script_dir/install_packages.zsh" "$script_dir/packages.lst"
 
 #---------------------------#
 # restore my custom configs #
@@ -51,8 +51,8 @@ cat <<"EOF"
 
 EOF
 
-"${scrDir}/install_wallpapers.zsh"
-"${scrDir}/install_configs.zsh"
+"$script_dir/install_wallpapers.zsh"
+"$script_dir/install_configs.zsh"
 
 #---------------------#
 # post-install script #
@@ -67,9 +67,9 @@ cat <<"EOF"
 
 EOF
 
-"${scrDir}/configure_sddm.zsh"
-"${scrDir}/configure_fcitx5.zsh"
-"${scrDir}/configure_user.zsh"
+"$script_dir/configure_sddm.zsh"
+"$script_dir/configure_fcitx5.zsh"
+"$script_dir/configure_user.zsh"
 
 #------------------------#
 # enable system services #
@@ -83,7 +83,7 @@ cat <<"EOF"
 
 EOF
 
-"${scrDir}/enable_systemctl.zsh"
+"$script_dir/enable_systemctl.zsh"
 
 echo "\n"
 print_log -stat "Installation" "completed"

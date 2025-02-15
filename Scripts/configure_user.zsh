@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-scrDir="$(dirname "$(realpath "$0")")"
-if ! source "${scrDir}/functions.zsh"; then
+local script_dir="$(dirname "$(realpath "$0")")"
+if ! source "$script_dir/functions.zsh"; then
   echo "Error: unable to source functions.zsh..."
   exit 1
 fi

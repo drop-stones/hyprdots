@@ -1,35 +1,33 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-scrDir=$(dirname "$(realpath "$0")")
-if ! source "${scrDir}/functions.zsh"; then
+local script_dir=$(dirname "$(realpath "$0")")
+if ! source "$script_dir/functions.zsh"; then
   echo "Error: unable to source functions.zsh..."
   exit 1
 fi
 
-aurhlpr="paru"
-
-if pkg_installed $aurhlpr; then
-  print_log -y "[skip] " "${aurhlpr}"
+if package_installed paru; then
+  print_log -y "[skip] " "paru"
   exit 0
 fi
 
-if pkg_installed git; then
-  git clone "https://aur.archlinux.org/${aurhlpr}.git" "$HOME/${aurhlpr}"
+if package_installed git; then
+  git clone "https://aur.archlinux.org/paru.git" "$HOME/paru"
 else
   print_log -r "AUR" -stat "missing" "git dependency..."
   exit 1
 fi
 
-cd "$HOME/${aurhlpr}" || exit
-if makepkg "${use_default}" -si; then
-  print_log -sec "AUR" -stat "installed" "${aurhlpr} aur helper..."
+cd "$HOME/paru" || exit
+if makepkg "$use_default" -si; then
+  print_log -sec "AUR" -stat "installed" "paru aur helper..."
 else
-  print_log -r "AUR" -stat "failed" "${aurhlpr} installation failed..."
-  echo "${aurhlpr} installation failed..."
+  print_log -r "AUR" -stat "failed" "paru installation failed..."
+  echo "paru installation failed..."
   exit 1
 fi
 
-if [ -d "$HOME/$aurhlpr" ]; then
-  print_log -sec "AUR" -stat "remove" "$aurhlpr directory..."
-  rm -rf "$HOME/${aurhlpr}"
+if [ -d "$HOME/paru" ]; then
+  print_log -sec "AUR" -stat "remove" "paru directory..."
+  rm -rf "$HOME/paru"
 fi

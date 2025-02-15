@@ -1,59 +1,41 @@
 #!/usr/bin/env zsh
 
-scrDir=$(dirname "$(realpath "$0")")
-listPkg="$1"
-if ! source "${scrDir}/functions.zsh"; then
+local script_dir=$(dirname "$(realpath "$0")")
+local package_list="$1"
+if ! source "$script_dir/functions.zsh"; then
   echo "Error: unable to source functions.zsh..."
   exit 1
 fi
 
-while read -r pkg deps; do
-  pkg="${pkg// /}"
-  if [ -z "${pkg}" ]; then
+local arch_packages=()
+local aur_packages=()
+
+while read -r package; do
+  local package="${package// /}"
+  if [ -z "$package" ]; then
     continue
   fi
 
-  if [ -n "${deps}" ]; then
-    deps="${deps%"${deps##*[![:space:]]}"}"
-    while read -r cdep; do
-      pass=$(cut -d '#' -f 1 "${listPkg}" | awk -F '|' -v chk="${cdep}" '{if($1 == chk) {print 1;exit}}')
-      if [ -z "${pass}" ]; then
-        if pkg_installed "${cdep}"; then
-          pass=1
-        else
-          break
-        fi
-      fi
-    done < <(xargs -n1 <<<"${deps}")
-
-    if [[ ${pass} -ne 1 ]]; then
-      print_log -warn "missing" "dependency [ ${deps} ] for ${pkg}..."
-      continue
-    fi
-  fi
-
-  if pkg_installed "${pkg}"; then
-    print_log -y "[skip] " "${pkg}"
-  elif pkg_available "${pkg}"; then
-    repo=$(pacman -Si "${pkg}" | awk -F ': ' '/Repository / {print $2}')
-    print_log -b "[queue] " -g "${repo}" -b "::" "${pkg}"
-    archPkg+=("${pkg}")
-  elif aur_available "${pkg}"; then
-    print_log -b "[queue] " -g "aur" -b "::" "${pkg}"
-    aurhPkg+=("${pkg}")
+  if package_installed "$package"; then
+    print_log -y "[skip] " "$package"
+  elif package_available "$package"; then
+    repo=$(pacman -Si "$package" | awk -F ': ' '/Repository / {print $2}')
+    print_log -b "[queue] " -g "$repo" -b "::" "$package"
+    arch_packages+=("$package")
+  elif aur_available "$package"; then
+    print_log -b "[queue] " -g "aur" -b "::" "$package"
+    aur_packages+=("$package")
   else
-    print_log -r "[error] " "unknown package ${pkg}..."
+    print_log -r "[error] " "unknown package $package..."
   fi
-done < <(cut -d '#' -f 1 "${listPkg}")
+done < <(cut -d '#' -f 1 "$package_list")
 
-IFS=${ofs}
-
-if [[ ${#archPkg[@]} -gt 0 ]]; then
+if [[ ${#arch_packages[@]} -gt 0 ]]; then
   print_log -b "[install] " "arch packages..."
-  sudo pacman -S --noconfirm "${archPkg[@]}"
+  sudo pacman -S --noconfirm "${arch_packages[@]}"
 fi
 
-if [[ ${#aurhPkg[@]} -gt 0 ]]; then
+if [[ ${#aur_packages[@]} -gt 0 ]]; then
   print_log -b "[install] " "aur packages..."
-  paru -S --noconfirm "${aurhPkg[@]}"
+  paru -S --noconfirm "${aur_packages[@]}"
 fi

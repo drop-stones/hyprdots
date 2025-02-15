@@ -1,21 +1,22 @@
 #!/usr/bin/env zsh
 
-scrDir=$(dirname "$(realpath "$0")")
-if ! source "${scrDir}/functions.zsh"; then
+local script_dir=$(dirname "$(realpath "$0")")
+if ! source "$script_dir/functions.zsh"; then
   echo "Error: unable to source functions.zsh..."
   exit 1
 fi
 
-while read -r serviceChk; do
-
-  if [[ $(systemctl list-units --all -t service --full --no-legend "${serviceChk}.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "${serviceChk}.service" ]]; then
-    print_log -y "[skip] " -b "active " "Service ${serviceChk}"
-  else
-    print_log -y "start" "Service ${serviceChk}"
-    if [ $flg_DryRun -ne 1 ]; then
-      sudo systemctl enable "${serviceChk}.service"
-      sudo systemctl start "${serviceChk}.service"
-    fi
+while read -r service; do
+  local service="${service// /}"
+  if [ -z "$service" ]; then
+    continue
   fi
 
-done <"${scrDir}/systemctl.lst"
+  if [[ $(systemctl list-units --all -t service --full --no-legend "$service.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "${service}.service" ]]; then
+    print_log -y "[skip] " -b "active " "Service $service"
+  else
+    print_log -y "start" "Service $service"
+    sudo systemctl enable "$service.service"
+    sudo systemctl start "$service.service"
+  fi
+done <"$script_dir/systemctl.lst"
