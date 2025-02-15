@@ -1,5 +1,35 @@
 ##############################################
+# Print Utilities
 ##############################################
+
+function print_log() {
+  declare -A decorations=(
+    [-r]="\e[31m{}\e[0m" # Red
+    [-g]="\e[32m{}\e[0m" # Green
+    [-y]="\e[33m{}\e[0m" # Yellow
+    [-b]="\e[34m{}\e[0m" # Blue
+    [-m]="\e[35m{}\e[0m" # Magenta
+    [-c]="\e[36m{}\e[0m" # Blue
+    [-w]="\e[37m{}\e[0m" # White
+    [-stat]="\e[4;30;46m {} \e[0m :: "
+    [-crit]="\e[30;41m {} \e[0m :: "
+    [-warn]="WARNING :: \e[30;43m {} \e[0m :: "
+    [-sec]="\e[32m[{}] \e[0m"
+    [-err]="ERROR :: \e[4;31m{} \e[0m"
+  )
+
+  while (("$#")); do
+    if [[ ${decorations[$1]} ]]; then
+      echo -ne "${decorations[$1]//\{\}/$2}"
+      shift 2
+    else
+      echo -ne "$1"
+      shift
+    fi
+  done
+  echo "" # new line
+}
+
 ##############################################
 # pacman/paru
 ##############################################
@@ -31,71 +61,4 @@ function aur_available() {
   else
     return 1
   fi
-
-function print_log() {
-  while (("$#")); do
-    case "$1" in
-    -r | +r)
-      echo -ne "\e[31m$2\e[0m"
-      shift 2
-      ;; # Red
-    -g | +g)
-      echo -ne "\e[32m$2\e[0m"
-      shift 2
-      ;; # Green
-    -y | +y)
-      echo -ne "\e[33m$2\e[0m"
-      shift 2
-      ;; # Yellow
-    -b | +b)
-      echo -ne "\e[34m$2\e[0m"
-      shift 2
-      ;; # Blue
-    -m | +m)
-      echo -ne "\e[35m$2\e[0m"
-      shift 2
-      ;; # Magenta
-    -c | +c)
-      echo -ne "\e[36m$2\e[0m"
-      shift 2
-      ;; # Cyan
-    -wt | +w)
-      echo -ne "\e[37m$2\e[0m"
-      shift 2
-      ;; # White
-    -n | +n)
-      echo -ne "\e[96m$2\e[0m"
-      shift 2
-      ;; # Neon
-    -stat)
-      echo -ne "\e[4;30;46m $2 \e[0m :: "
-      shift 2
-      ;; # status
-    -crit)
-      echo -ne "\e[30;41m $2 \e[0m :: "
-      shift 2
-      ;; # critical
-    -warn)
-      echo -ne "WARNING :: \e[30;43m $2 \e[0m :: "
-      shift 2
-      ;; # warning
-    +)
-      echo -ne "\e[38;5;$2m$3\e[0m"
-      shift 3
-      ;; # Set color manually
-    -sec)
-      echo -ne "\e[32m[$2] \e[0m"
-      shift 2
-      ;; # section use for logs
-    -err)
-      echo -ne "ERROR :: \e[4;31m$2 \e[0m"
-      shift 2
-      ;; #error
-    *)
-      echo -ne "$1"
-      shift
-      ;;
-    esac
-  done
-  echo ""
 }
