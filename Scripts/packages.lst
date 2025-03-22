@@ -31,6 +31,7 @@ dunst                                                  # notification daemon
 grim                                                   # screenshot tool
 slurp                                                  # region select for screenshot/screenshare
 grimblast-git                                          # screenshot helper within hyprland
+hyprswitch                                             # A CLI/GUI to switch between windows
 
 # --------------------------------------------------- // Utilities
 wget                                                   # file retriever from the web
