@@ -53,6 +53,7 @@ EOF
 
 "$script_dir/install_wallpapers.zsh"
 "$script_dir/install_configs.zsh"
+"$script_dir/install_systemctl.zsh"
 
 #---------------------#
 # post-install script #
