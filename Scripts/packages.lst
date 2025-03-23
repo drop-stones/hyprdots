@@ -35,6 +35,7 @@ hyprswitch                                             # A CLI/GUI to switch bet
 
 # --------------------------------------------------- // Utilities
 wget                                                   # file retriever from the web
+reflector                                              # retrieve and filter the latest pacman mirror list
 
 # --------------------------------------------------- // Applications
 alacritty                                              # terminal
